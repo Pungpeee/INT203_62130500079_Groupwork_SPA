@@ -1,30 +1,55 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+
+      <div class="toprightRoute w-full">
+    <div class="flex justify-end text-sm">
+      <base-card>
+    <router-link to="/" class="m-8">Home</router-link>
+      </base-card>
   </div>
+  </div>
+
+  <div class="midRoute w-full">
+    <div class="flex justify-center">
+    <router-link to="/profile">Profile</router-link>|
+    <router-link to="/subscribe">Subscribe</router-link> 
+  </div>
+  </div>
+
   <router-view/>
+
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+.toprightRoute {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: rgb(56, 5, 5);
+}
+.midRoute {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgb(56, 5, 5);
 }
 
-#nav {
+.toprightRoute {
+  background-color: pink;
+}
+/* #nav {
   padding: 30px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: red;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
+
 </style>
+
+
+
