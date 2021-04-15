@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import profile from '../views/profile.vue'
+import profile from '../views/Profile.vue'
 import errorpage from '../error/errorpage.vue'
+import subscribe from '../components/subscribe/SubscribeForm.vue'
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: profile
+  },
+  {
+    path: '/subscribe',
+    name: 'subscribe',
+    component: subscribe
   },
   {
     path: '/:catchNotMatchPath(.*)',
