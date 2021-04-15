@@ -8,10 +8,10 @@
   </div>
 
   <div class="text-lg w-full flex flex-col items-center justfiy-center">
-    <div class="w-80 flex justify-center ">
-      <img :src="img"/>
+    <div class="zoom w-1/6 flex justify-center shadow-xl my-10">
+      <img :src="img" class="rounded-lg"/>
     </div>
-    <base-card class="mt-3">
+    <base-card class="mt-3 p-4">
       <p>🍭Name : {{ name }}</p>
       <p>🍭Birthday : {{ birth }}</p>
       <p>🍭Youtube : {{ youtube }}</p>
@@ -34,3 +34,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+.zoom {
+    transition: transform .2s;
+    
+  }
+  
+  .zoom:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
+</style>
