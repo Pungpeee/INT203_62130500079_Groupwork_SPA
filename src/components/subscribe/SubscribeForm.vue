@@ -57,7 +57,14 @@
       </button>
     </form>
     <div>
-      <subscriber v-for="list in subscriberLists" :key="list.id" :name="list.name" :like="list.like"></subscriber>
+      <subscriber
+        v-for="list in subscriberLists"
+        :key="list.id"
+        :name="list.name"
+        :like="list.like"
+        :id="list.id"
+        @editevent="edit"
+      ></subscriber>
     </div>
   </div>
 </template>
@@ -65,16 +72,14 @@
 
 <script>
 import axios from "axios";
-import BaseCard from "../basecard/BaseCard.vue";
 import Subscriber from "./Subscriber.vue";
 export default {
   components: {
-    BaseCard,
     Subscriber,
   },
   methods: {
     async addSubscriber() {
-      const response = await axios.post("http://localhost:5000/subscribers", {
+    await axios.post("http://localhost:5000/subscribers", {
         name: this.name,
         like: this.like
       });
@@ -83,19 +88,32 @@ export default {
         like: this.like
       })
     },
+    async edit(editingData) {
+     this.name = editingData.name
+     this.like = editingData.like
+
+     const response = await axios.put(`http://localhost:5000/subscribers/${editingData.id}`, {
+        name: editingData.name,
+        like: editingData.like
+      })
+      }
   },
   data() {
     return {
       subscriberLists: [],
       like: "",
-      name: "",
-    };
+      name: "", 
+    }
   },
   async mounted() {
     const response = await axios.get("http://localhost:5000/subscribers");
     this.subscriberLists = response.data;
     console.log(response);
-  },
-};
+  }
+}
+
+
+  
+
 </script>
 
