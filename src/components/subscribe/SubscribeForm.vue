@@ -56,6 +56,9 @@
         Submit
       </button>
     </form>
+    <div>
+      <subscriber v-for="list in subscriberLists" :key="list.id" :name="list.name" :like="list.like"></subscriber>
+    </div>
   </div>
 </template>
 
@@ -63,14 +66,22 @@
 <script>
 import axios from "axios";
 import BaseCard from "../basecard/BaseCard.vue";
+import Subscriber from "./Subscriber.vue";
 export default {
-  components: { BaseCard },
+  components: {
+    BaseCard,
+    Subscriber,
+  },
   methods: {
     async addSubscriber() {
       const response = await axios.post("http://localhost:5000/subscribers", {
         name: this.name,
-        like: this.like,
+        like: this.like
       });
+      this.subscriberLists.push({
+        name: this.name,
+        like: this.like
+      })
     },
   },
   data() {
@@ -87,5 +98,4 @@ export default {
   },
 };
 </script>
-
 
