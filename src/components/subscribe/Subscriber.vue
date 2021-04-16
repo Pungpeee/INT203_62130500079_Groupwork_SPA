@@ -1,6 +1,6 @@
 <template>
-  <h1>{{ name }} <i class="far fa-edit" @click="editbtn"></i></h1>
-  <h1>{{ like }}</h1>
+  <h1 class="border-pink-500 rounded-xl shadow p-2 my-2">{{ name }} like Pungpeee {{ like }} <i class="far fa-edit" @click="editbtn"></i> </h1>
+  
 </template>
 
 <script>
