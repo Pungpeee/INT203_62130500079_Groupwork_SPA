@@ -13,7 +13,7 @@
         <!-- <input class="input" id="name" type="text"/> -->
         <input v-model="name" placeholder="Enter name here..." />
       </div>
-      <p v-if="inputName" class="text-red-500">Please enter your name!</p>
+      <p v-if="inputName" class="text-red-500">Please enter your name! 🥺</p>
 
       <h2>🎀How much do you like her ? (Satisfaction level)</h2>
       <div class="border-pink-500 rounded-xl shadow p-2 my-1">
@@ -49,7 +49,7 @@
           <label class="label" for="like-low">low</label>
         </div>
       </div>
-      <p v-if="inputLike" class="text-red-500">Please enter in form!</p>
+      <p v-if="inputLike" class="text-red-500">Please enter in form! 🥺</p>
       <button
         class="btn rounded-lg p-2 ring-4 ring-pink-200 ring-inset mt-3 hover:bg-yellow-100"
         type="submit"
@@ -102,6 +102,7 @@ export default {
       }
     },
     async edit(editingData) {
+     try {
       this.isEdit = true;
       this.name = editingData.name;
       this.like = editingData.like;
@@ -125,6 +126,9 @@ export default {
       this.editingID = "";
       this.name = "";
       this.like = null;
+     } catch (error) {
+        console.log(error);
+      }
     },
     async getSubscriberLists() {
       try {
