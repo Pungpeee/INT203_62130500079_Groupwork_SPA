@@ -72,6 +72,7 @@
         :like="list.like"
         :id="list.id"
         @editevent="updateEdit"
+        @deleteevent="deleteForm"
       ></subscriber>
     </div>
   </div>
@@ -134,6 +135,19 @@ export default {
         console.log(`Could not get! ${error}`);
       }
     },
+    async deleteForm(deleted) {
+      try {
+        await fetch(`http://localhost:5000/subscribers/${deleted.id}`, {
+          method: "DELETE",
+        });
+
+        this.subscriberLists = this.subscriberLists.filter(
+          (list) => list.id !== deleted.id
+        );
+      } catch (error) {
+        console.log(`Could not delete! ${error}`);
+      }
+    },
 
     updateEdit(oldData) {
       this.isEdit = true;
@@ -145,8 +159,8 @@ export default {
     submitForm() {
       this.inputName = this.name === "" ? true : false;
       this.inputLike = this.like === "" ? true : false;
-      if(this.name === "" || this.like === "" ) {
-        return 
+      if (this.name === "" || this.like === "") {
+        return;
       }
       if (this.isEdit) {
         this.edit({

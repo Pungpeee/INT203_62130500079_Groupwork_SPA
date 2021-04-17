@@ -1,5 +1,8 @@
 <template>
-  <h1 class="border-pink-500 rounded-xl shadow p-2 my-2">{{ name }} like Pungpeee {{ like }} <i class="far fa-edit" @click="editbtn"></i> </h1>
+  <h1 class="border-pink-500 rounded-xl shadow p-2 my-2">{{ name }} like Pungpeee {{ like }} <i class="far fa-edit" @click="editbtn">
+    </i>   
+  <i class="far fa-trash-alt" @click="deletebtn"> </i>
+  </h1>
   
 </template>
 
@@ -16,8 +19,15 @@ export default {
         id: this.id,
       });
     },
-  },
-};
+deletebtn() {
+      this.$emit("deleteevent", {
+        id: this.id,
+      });
+    },
+  }
+
+  }
+  
 </script>
 
 <style>
